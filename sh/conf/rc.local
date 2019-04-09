@@ -12,14 +12,16 @@
 # By default this script does nothing.
 #qbittorrent-nox >/dev/null&
 
-sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
-BaiduPCS-Go  >/dev/null&
-sudo  netdata >/dev/null&
-/usr/bin/rslsync  --config /opt/sync.conf >/dev/null&
-deluged  >/dev/null&
-deluge-web  >/dev/null&
-service apache2 restart
-service smbd restart 
-service webmin restart
-service plexmediaserver restart
+su root -c "exec /usr/local/bin/start.sh"
+
+#sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
+#BaiduPCS-Go  >/dev/null&
+#sudo  netdata >/dev/null&
+#/usr/bin/rslsync  --config /opt/sync.conf >/dev/null&
+#deluged  >/dev/null&
+#deluge-web  >/dev/null&
+#service apache2 restart
+#service smbd restart 
+#service webmin restart
+#service plexmediaserver restart
 exit 0
