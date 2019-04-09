@@ -6,8 +6,10 @@ sync=$(ps -ef |grep rslsync |grep -v "grep" |wc -l)
 aria=$(ps -ef |grep aria2c |grep -v "grep" |wc -l)
 baidu=$(ps -ef |grep BaiduPCS-Go |grep -v "grep" |wc -l)
 netsa=$(ps -ef |grep netdata |grep -v "grep" |wc -l)
-
-
+apache=$(ps -ef |grep apache2 |grep -v "grep" |wc -l)
+smb=$(ps -ef |grep  smbd |grep -v "grep" |wc -l)
+webssh=$(ps -ef |grep perl |grep -v "grep" |wc -l)
+plex=$(ps -ef |grep Plex |grep -v "grep" |wc -l)
 
 if [ $de -eq 0 ]; then
    deluged  >/dev/null  2>&1
