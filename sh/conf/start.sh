@@ -1,15 +1,42 @@
 #!/bin/bash
-/usr/bin/rslsync  --config /opt/sync.conf  >/dev/null 2>&1
-sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
-#echo "aria2"
-#echo 
-BaiduPCS-Go  >/dev/null &
-#echo "BaiduPCS-Go"
-nohup sudo  netdata >/dev/null  2>&1
-#echo "netdata"
-
-
 de=`lsof -i :8112|grep -v "PID" | awk '{print $2}'`
+sync=`lsof -i :7788|grep -v "PID" | awk '{print $2}'`
+aria=`lsof -i :6800|grep -v "PID" | awk '{print $2}'`
+baidu=`lsof -i :5299|grep -v "PID" | awk '{print $2}'`
+netdata=`lsof -i :19999|grep -v "PID" | awk '{print $2}'`
+
+
+if [ "$sync" != "" ];
+then
+   echo ""
+else
+/usr/bin/rslsync  --config /opt/sync.conf  >/dev/null 2>&1
+fi
+###########################
+if [ "$aria" != "" ];
+then
+   echo ""
+else
+
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
+fi
+##########################
+if [ "$baidu" != "" ];
+then
+   echo ""
+else
+BaiduPCS-Go  >/dev/null &
+fi
+################################
+if [ "$netdata" != "" ];
+then
+   echo ""
+else
+nohup sudo  netdata >/dev/null  2>&1
+fi
+#######################
+
+#####################
 
 if [ "$de" != "" ];
 then
