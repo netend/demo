@@ -1,0 +1,22 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+qbittorrent-nox >/dev/null&
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
+BaiduPCS-Go  >/dev/null&
+sudo  netdata >/dev/null&
+/usr/bin/rslsync  --config /opt/sync.conf >/dev/null&
+service apache2 restart&
+service smbd restart 
+service webmin restart
+service plexmediaserver restart
+exit 0
