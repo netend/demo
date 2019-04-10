@@ -11,11 +11,14 @@ smb=$(ps -ef |grep  smbd |grep -v "grep" |wc -l)
 webssh=$(ps -ef |grep perl |grep -v "grep" |wc -l)
 plex=$(ps -ef |grep Plex |grep -v "grep" |wc -l)
 
+for stat in {1..3}
+
+do
 
 ###############################################
 if [ $apache -eq 0 ]; then
    service apache2 restart >/dev/null 2>&1
-   echo "apache2"
+   echo "正在启动apache2"
    
 else
     echo "阿帕奇正在运行"
@@ -24,7 +27,7 @@ fi
 
   if [ $smb -eq 0 ]; then
     service smbd restart >/dev/null 2>&1
-    echo "smb"
+    echo "正在启动smb"
    
 else
     echo "局域网共享正在运行"
@@ -33,7 +36,7 @@ fi
 
   if [ $webssh -eq 0 ]; then
      service webmin restart >/dev/null 2>&1
-     echo "webmin"
+     echo "正在启动webmin"
 else
     echo "WEBssh正在运行"
 fi 
@@ -41,7 +44,7 @@ fi
  if [ $plex -eq 0 ]; then
    service plexmediaserver restart >/dev/null 2>&1
 
-   echo "PLEX"
+   echo "正在启动PLEX"
    
 else
     echo "PLEX正在运行"
@@ -50,7 +53,7 @@ fi
 if [ $de -eq 0 ]; then
    deluged  >/dev/null  2>&1
    deluge-web  >/dev/null  2>&1
-   echo "deluge-web"
+   echo "正在启动deluge-web"
    
 else
         echo BT正在运行
@@ -58,32 +61,32 @@ fi
 #############################
 if [ $sync -eq 0 ]; then
      rslsync  --config /opt/sync.conf  >/dev/null 2>&1
-     echo "rslsync"
+     echo "正在启动rslsync"
 else
         echo sync正在运行
 fi
 #################################
 if [ $aria -eq 0 ]; then
        sudo aria2c --conf-path=/etc/aria2/aria2.conf -D&
-       echo "aria2"
+       echo "正在启动aria2"
 else
         echo aria2正在运行
 fi
 ################################
 if [ $baidu -eq 0 ]; then
         BaiduPCS-Go  >/dev/null &
-        echo "BaiduPCS-Go"
+        echo "正在启动BaiduPCS-Go"
 else
         echo BaiduPCS正在运行
 fi
 #####################################
 if [ $netsa -eq 0 ]; then
         nohup sudo  netdata >/dev/null  2>&1
-        echo "netdata"
+        echo "正在启动netdata"
 else
         echo "资源检测正在运行"
 fi
 ###############################
-
+done
 
 exit 0
