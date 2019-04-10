@@ -52,7 +52,7 @@ fi
 ########################################
 if [ $de -eq 0 ]; then
    deluged  >/dev/null  2>&1
-   deluge-web  >/dev/null  2>&1
+   deluge-web  >/dev/null 
    echo "正在启动deluge-web"
    
 else
