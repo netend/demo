@@ -49,15 +49,7 @@ fi
 else
     echo "PLEX正在运行"
 fi 
-########################################
-if [ $de -eq 0 ]; then
-   deluged  >/dev/null  2>&1
-   deluge-web  >/dev/null 
-   echo "正在启动deluge-web"
-   
-else
-        echo BT正在运行
-fi
+
 #############################
 if [ $sync -eq 0 ]; then
      rslsync  --config /opt/sync.conf  >/dev/null 2>&1
@@ -86,8 +78,18 @@ if [ $netsa -eq 0 ]; then
 else
         echo "资源检测正在运行"
 fi
+########################################
+if [ $de -eq 0 ]; then
+   deluged  >/dev/null  2>&1
+  nohup deluge-web  >/dev/null &
+   echo "正在启动deluge-web"
+   
+else
+        echo BT正在运行
+fi
 echo "--------------------------------------------------------"
 ###############################
+
 done
 
 exit 0
