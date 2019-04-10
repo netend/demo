@@ -1,17 +1,15 @@
 #!/bin/bash
 if [[ ! -f "/usr/bin/screen" ]]; then
     sudo apt install screen -y
-    echo "no"
+    echo "add screnn"
 	
 else
-	echo "yes"
+	echo "-----------------"
 fi
 
-grep "/usr/local/bin/start.sh" /etc/rc.local >/dev/null
 
-if [ $? -eq 0 ]; then
-    echo "rc_yes"
-else
+
+if [[ ! -f "/usr/local/bin/start.sh" ]]; then
 screen_name="add"
 screen -dmS $screen_name
 
@@ -19,6 +17,7 @@ install="cd /mnt&&mkdir add&&cd add&&apt install wget -y&&wget http://download.d
 
 screen -x -S $screen_name -p 0 -X stuff "$install"
 screen -x -S $screen_name -p 0 -X stuff '\n'
+else
+	echo "yes"
 fi
-
 exit 0 
