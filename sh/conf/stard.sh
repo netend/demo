@@ -59,3 +59,5 @@ echo "webmin"
 
 service plexmediaserver restart >/dev/null 2>&1
 echo "PLEX"
+
+exit 0
