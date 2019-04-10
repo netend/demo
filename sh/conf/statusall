@@ -11,11 +11,20 @@ smb=$(ps -ef |grep  smbd |grep -v "grep" |wc -l)
 webssh=$(ps -ef |grep perl |grep -v "grep" |wc -l)
 plex=$(ps -ef |grep Plex |grep -v "grep" |wc -l)
 
+
+######################################################
+  if [ $aria -eq 0 ]; then
+
+   echo "aria没有运行"
+
+else
+    echo "aria正在运行"
+fi
+########################################################
   if [ $de -eq 0 ]; then
 
    echo "BT没有运行"
-   echo  "你可以输入: deluged  >/dev/null  2>&1&&deluge-web  >/dev/null  2>&1 运行"
-   echo  "---------------------------------------------"
+
       
 else
     echo "BT正在运行"
