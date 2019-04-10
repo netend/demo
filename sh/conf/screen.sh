@@ -10,7 +10,7 @@ fi
 
 
 if [[ ! -f "/usr/local/bin/start.sh" ]]; then
-screen -S sa -X quit
+screen -S sa -X quit >/dev/null
 screen_name="add"
 screen -dmS $screen_name
 
