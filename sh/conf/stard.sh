@@ -10,7 +10,10 @@ apache=$(ps -ef |grep apache2 |grep -v "grep" |wc -l)
 smb=$(ps -ef |grep  smbd |grep -v "grep" |wc -l)
 webssh=$(ps -ef |grep perl |grep -v "grep" |wc -l)
 plex=$(ps -ef |grep Plex |grep -v "grep" |wc -l)
-
+#service php7.0-fpm stop
+#service nginx stop
+#service php7.0-fpm start
+#service nginx start
 for stat in {1..3}
 
 do
