@@ -26,7 +26,7 @@ fi
 #############################################
 
   if [ $smb -eq 0 ]; then
-    service smbd restart >/dev/null 2>&1
+    service smbd start >/dev/null 2>&1
     echo "正在启动smb"
    
 else
@@ -42,7 +42,7 @@ else
 fi 
 ###################################
  if [ $plex -eq 0 ]; then
-   service plexmediaserver restart >/dev/null 2>&1
+   service plexmediaserver start >/dev/null 2>&1
 
    echo "正在启动PLEX"
    
