@@ -12,9 +12,7 @@ else
 fi
 ########################################################
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
-endtime=`date +'%Y-%m-%d %H:%M:%S'`
-start_seconds=$(date --date="$starttime" +%s);
-end_seconds=$(date --date="$endtime" +%s);             
+       
 ########################################################
 sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg nano unzip gnupg lsof
 
@@ -300,5 +298,8 @@ EOF
 bash /usr/local/bin/status
   echo "安装完毕，现在请打开浏览器输入:"
   echo -e "\033[34mhttp://$wifiip/ip \033[0m"
+  endtime=`date +'%Y-%m-%d %H:%M:%S'`
+  start_seconds=$(date --date="$starttime" +%s);
+  end_seconds=$(date --date="$endtime" +%s);      
   echo "本次安装共耗时： "$((end_seconds-start_seconds))"s"
 exit 0
