@@ -5,8 +5,16 @@ wifiip=$(ip addr |grep inet |grep -v inet6 |grep wlan0|awk '{print $2}' |awk -F 
 else
 echo ""
 fi
+ if [ ! -f "/var/www/html/ip/1.jpg" ];then  >/dev/null
+        cp /var/www/html/1.jpg /var/www/html/ip/1.jpg
+else
+echo ""
+fi
+grep "$wifiip" /var/www/html/ip/index.html >/dev/null
 
-
+if [ $? -eq 0 ]; then
+	echo "yes--no"
+else
     > /var/www/html/ip/index.html
  cat <<EOF >>  /var/www/html/ip/index.html
        
@@ -54,4 +62,6 @@ fi
 </body>
 </html> 
 EOF
+
 	echo "--------html------done-----------"
+fi
