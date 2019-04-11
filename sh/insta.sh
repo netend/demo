@@ -117,7 +117,7 @@ sudo mkdir /etc/aria2&&sudo mkdir /etc/conf
 $index
 EOF
      chmod -R 755 /etc/conf/index.sh
-	 ln -s  /etc/conf/index.sh /usr/local/bin/index.sh
+	 ln   /etc/conf/index.sh /usr/local/bin/index.sh
 else
       echo "-----------"
 fi
