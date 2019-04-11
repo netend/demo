@@ -1,5 +1,12 @@
 #!/bin/bash
 wifiip=$(ip addr |grep inet |grep -v inet6 |grep wlan0|awk '{print $2}' |awk -F "/" '{print $1}')
+ if [ ! -d "/var/www/html/ip" ];then  >/dev/null
+        mkdir /var/www/html/ip
+else
+echo ""
+fi
+
+
     > /var/www/html/ip/index.html
  cat <<EOF >>  /var/www/html/ip/index.html
        
