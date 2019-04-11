@@ -174,7 +174,7 @@ cat <<EOF >> /etc/conf/sync.conf
 $syn
 EOF
      chmod 755 /etc/conf/sync.conf
-     ln -s /etc/conf/sync.conf /opt/sync.conf
+     ln  /etc/conf/sync.conf /opt/sync.conf
 else
       echo "--------"
 fi
