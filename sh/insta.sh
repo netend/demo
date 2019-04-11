@@ -5,7 +5,7 @@ else
   { mane=$(pwd)
     echo "需使用root用户"
 	echo "请执行sudo -i 或者 su"
-	echo "然后执行 bash $mane/install.sh"
+	echo "然后执行 bash $mane/insta.sh"
 	echo "-------------------------------"
 	exit 0;
 	}
