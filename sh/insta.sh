@@ -48,22 +48,21 @@ fi
 #    sudo apt update
 #fi
 ###################################################
+#if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
+#if [[ ! -f "/etc/apt/sources.list.d/php.list" ]]; then
+#    echo "添加php7.0"
+#    echo "deb http://repozytorium.mati75.eu/raspbian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/php.list
+#    wget http://download.daili.cf/52/key/php.key && apt-key add  php.key 
+#	apt update
+#	 echo "done"
+#else
+#	echo "-----------php--------"
+#fi
+# echo "-------Debian GNU/Linux 8--------"
+# else
 
-if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
-if [[ ! -f "/etc/apt/sources.list.d/php.list" ]]; then
-    echo "添加php7.0"
-    echo "deb http://repozytorium.mati75.eu/raspbian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/php.list
-    wget http://download.daili.cf/52/key/php.key && apt-key add  php.key 
-	apt update
-	 echo "done"
-else
-	echo "-----------php--------"
-fi
- echo "-------Debian GNU/Linux 8--------"
- else
-
- echo "no"
- fi
+# echo "no"
+# fi
 
 sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba webmin  -y #resilio-sync 
 ################################################
@@ -309,7 +308,7 @@ bash /usr/local/bin/status
   endtime=`date +'%Y-%m-%d %H:%M:%S'`
   start_seconds=$(date --date="$starttime" +%s);
   end_seconds=$(date --date="$endtime" +%s);      
-  cat <<EOF >> /var/www/html/time.html
+  cat <<EOF >> /var/www/html/time
 _____________________-__________________________________________
    安装开始于  $datime
    安装结束于  $tetime
