@@ -34,6 +34,7 @@ if [ $? -eq 0 ]; then
 else
 	echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
 	    wget -qO - https://github.com/netend/demo/raw/master/sh/key/webmin.asc | sudo apt-key add -
+	    sudo apt update
     echo "-----webmin---done-----"
 fi
 ######################################
