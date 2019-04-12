@@ -10,6 +10,7 @@ else
 	exit 0;
 	}
 fi
+datime=$(date)
 ########################################################
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
        
@@ -32,20 +33,19 @@ if [ $? -eq 0 ]; then
     echo "-----webmin----yes-----"
 else
 	echo "deb https://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+	    wget -qO - https://github.com/netend/demo/raw/master/sh/key/webmin.asc | sudo apt-key add -
     echo "-----webmin---done-----"
 fi
 ######################################
-grep "http://linux-packages.resilio.com/resilio-sync/deb" /etc/apt/sources.list.d/resilio-sync.list >/dev/null
-if [ $? -eq 0 ]; then
-    echo "-----sync------yes-----"
-else
-	echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
-    echo "--------sync-------done-----"
-	wget -qO - https://github.com/netend/demo/raw/master/sh/key/sync.asc | sudo apt-key add -
-    wget -qO - https://github.com/netend/demo/raw/master/sh/key/webmin.asc | sudo apt-key add -
-    sudo apt update
-fi
-
+#grep "http://linux-packages.resilio.com/resilio-sync/deb" /etc/apt/sources.list.d/resilio-sync.list >/dev/null
+#if [ $? -eq 0 ]; then
+#   echo "-----sync------yes-----"
+#else
+#	echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
+#    echo "--------sync-------done-----"
+#	wget -qO - https://github.com/netend/demo/raw/master/sh/key/sync.asc | sudo apt-key add -
+#    sudo apt update
+#fi
 ###################################################
 
 if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
@@ -64,7 +64,7 @@ fi
  echo "no"
  fi
 
-sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba resilio-sync webmin  -y
+sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba webmin  -y #resilio-sync 
 ################################################
 
 	for stat in {1..3}
@@ -103,12 +103,12 @@ cat <<EOF >>  /etc/samba/smb.conf
 $smb_conf
 
 EOF
-        echo "添加smb配置"
+        echo "smb"
 fi
 
 	
 	useradd -m smb
-  echo "配置SMB用户与密码"	
+  echo "SMB"	
 	echo -e "aoyedeai\naoyedeai"|smbpasswd -a -s smb
 
 #########################################
@@ -130,7 +130,7 @@ index.sh
 
 #########################################
 if [[ ! -f "/var/www/html/AriaNG/index.html" ]]; then
-    echo "下载压缩文件"
+    echo "下载网站压缩文件"
     wget http://download.daili.cf/52/zip/html.zip	
 	sudo unzip $ipath/html.zip
 	mv   $ipath/html/* /var/www/html/
@@ -141,13 +141,22 @@ else
 fi
 ################################
 if [[ ! -d "/usr/lib/plexmediaserver" ]]; then
-    echo "下载plex文件"
+    echo "下载plex-deb"
     wget http://download.daili.cf/52/plexmediaserver_1.15.3.876-ad6e39743_armhf.deb
 	sudo dpkg -i $ipath/plexmediaserver_1.15.3.876-ad6e39743_armhf.deb
 	 usermod -a -G aid_inet,aid_net_raw plex
 
 else
 	echo "------------------PLEX--------------"
+fi
+#########################################
+if [[ ! -d "/usr/bin/rslsync" ]]; then
+    echo "下载sync-deb"
+    wget http://download.daili.cf/52/deb/resilio-sync_2.6.3-1_armhf.deb
+	sudo dpkg -i $ipath/resilio-sync_2.6.3-1_armhf.deb
+
+else
+	echo "------------------sync--------------"
 fi
 ######################################
 sudo rm -rf  $ipath/*  >/dev/null 2>&1
@@ -293,7 +302,11 @@ echo "启动软件"
  su root -c "exec /usr/local/bin/start.sh"
 
 cat <<EOF >> /etc/conf/date
-$((end_seconds-start_seconds))秒
+_________________________________________
+安装开始于$datime
+本次安装共耗时 $((end_seconds-start_seconds))秒
+————————————————————————————————————————————
+--------------------------------------------
 EOF
 bash /usr/local/bin/status
   echo "安装完毕，现在请打开浏览器输入:"
