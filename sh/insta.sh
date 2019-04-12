@@ -10,10 +10,10 @@ else
 	exit 0;
 	}
 fi
-datime=$(date)
+
 ########################################################
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
-       
+datime=$(date)
 ########################################################
 sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg nano unzip gnupg lsof
 
@@ -301,19 +301,21 @@ echo "启动软件"
 #########################################
 
  su root -c "exec /usr/local/bin/start.sh"
+tetime=$(date)
 
-cat <<EOF >> /etc/conf/date
-_________________________________________
-安装开始于$datime
-本次安装共耗时 $((end_seconds-start_seconds))秒
-————————————————————————————————————————————
---------------------------------------------
-EOF
 bash /usr/local/bin/status
   echo "安装完毕，现在请打开浏览器输入:"
   echo -e "\033[34mhttp://$wifiip/ip \033[0m"
   endtime=`date +'%Y-%m-%d %H:%M:%S'`
   start_seconds=$(date --date="$starttime" +%s);
   end_seconds=$(date --date="$endtime" +%s);      
+  cat <<EOF >> /var/www/html/time.html
+_____________________-__________________________________________
+   安装开始于  $datime
+   安装结束于  $tetime
+     本次安装共耗时   $((end_seconds-start_seconds))秒
+————————————————————————————————————————————————————————————————
+-----------------------------------------------------------------
+EOF
   echo "本次安装共耗时： "$((end_seconds-start_seconds))"s"
 exit 0
