@@ -38,31 +38,31 @@ else
     echo "-----webmin---done-----"
 fi
 ######################################
-#grep "http://linux-packages.resilio.com/resilio-sync/deb" /etc/apt/sources.list.d/resilio-sync.list >/dev/null
-#if [ $? -eq 0 ]; then
-#   echo "-----sync------yes-----"
-#else
-#	echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
-#    echo "--------sync-------done-----"
-#	wget -qO - https://github.com/netend/demo/raw/master/sh/key/sync.asc | sudo apt-key add -
-#    sudo apt update
-#fi
+grep "http://linux-packages.resilio.com/resilio-sync/deb" /etc/apt/sources.list.d/resilio-sync.list >/dev/null
+if [ $? -eq 0 ]; then
+   echo "-----sync------yes-----"
+else
+	echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
+    echo "--------sync-------done-----"
+	wget -qO - https://github.com/netend/demo/raw/master/sh/key/sync.asc | sudo apt-key add -
+   sudo apt update
+fi
 ###################################################
-#if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
-#if [[ ! -f "/etc/apt/sources.list.d/php.list" ]]; then
-#    echo "添加php7.0"
-#    echo "deb http://repozytorium.mati75.eu/raspbian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/php.list
-#    wget http://download.daili.cf/52/key/php.key && apt-key add  php.key 
-#	apt update
-#	 echo "done"
-#else
-#	echo "-----------php--------"
-#fi
-# echo "-------Debian GNU/Linux 8--------"
-# else
+if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
+if [[ ! -f "/etc/apt/sources.list.d/php.list" ]]; then
+   echo "添加php7.0"
+    echo "deb http://repozytorium.mati75.eu/raspbian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/php.list
+    wget http://download.daili.cf/52/key/php.key && apt-key add  php.key 
+	apt update
+	 echo "done"
+else
+	echo "-----------php--------"
+fi
+ echo "-------Debian GNU/Linux 8--------"
+else
 
-# echo "no"
-# fi
+ echo "no"
+ fi
 
 sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba webmin  -y #resilio-sync 
 ################################################
@@ -150,14 +150,14 @@ else
 	echo "------------------PLEX--------------"
 fi
 #########################################
-if [[ ! -d "/usr/bin/rslsync" ]]; then
-    echo "下载sync-deb"
-    wget http://download.daili.cf/52/deb/resilio-sync_2.6.3-1_armhf.deb
-	sudo dpkg -i $ipath/resilio-sync_2.6.3-1_armhf.deb
+#if [[ ! -d "/usr/bin/rslsync" ]]; then
+  #  echo "下载sync-deb"
+ #   wget http://download.daili.cf/52/deb/resilio-sync_2.6.3-1_armhf.deb
+#	sudo dpkg -i $ipath/resilio-sync_2.6.3-1_armhf.deb
 
-else
-	echo "------------------sync--------------"
-fi
+#else
+#	echo "------------------sync--------------"
+#fi
 ######################################
 sudo rm -rf  $ipath/*  >/dev/null 2>&1
 #######################################
