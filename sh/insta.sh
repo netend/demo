@@ -64,7 +64,7 @@ else
  echo "no"
  fi
 
-sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba webmin  -y #resilio-sync 
+sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba resilio-sync  webmin  -y #
 ################################################
 
 	for stat in {1..3}
