@@ -133,7 +133,7 @@ index.sh
 if [[ ! -f "/var/www/html/AriaNG/index.html" ]]; then
     echo "下载网站压缩文件"
     wget http://download.daili.cf/52/zip/html.zip	
-	sudo unzip $ipath/html.zip
+	sudo unzip $ipath/html.zip >/dev/null 2>&1
 	mv   $ipath/html/* /var/www/html/
 	sudo chmod -R 777 /var/www/
 	
