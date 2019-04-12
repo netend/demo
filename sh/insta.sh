@@ -309,10 +309,20 @@ bash /usr/local/bin/status
   start_seconds=$(date --date="$starttime" +%s);
   end_seconds=$(date --date="$endtime" +%s);      
   cat <<EOF >> /var/www/html/time
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>安装计时</title>
+<body>
+
+<h2>此次安装耗时</h2>
+<!--于2019/4/6更新
+一键脚本-->
 _____________________-__________________________________________
-   安装开始于  $datime
-   安装结束于  $tetime
-     本次安装共耗时   $((end_seconds-start_seconds))秒
+  <p> 安装开始于  $datime
+  <p> 安装结束于  $tetime
+  <p> 本次安装共耗时   $((end_seconds-start_seconds))秒
 ————————————————————————————————————————————————————————————————
 -----------------------------------------------------------------
 EOF
