@@ -72,7 +72,7 @@ else
 
  echo "no"
  fi
-
+sudo apt-get update
 sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web \
 aria2 samba resilio-sync  webmin  -y #
 ################################################
@@ -121,7 +121,7 @@ fi
 sudo mkdir /etc/aria2&&sudo mkdir /etc/conf
 #########################################
 
- if [ ! -f "/etc/conf/index.sh" ];then
+html() { if [ ! -f "/etc/conf/index.sh" ];then
    cat <<EOF >> /etc/conf/index.sh
 $index
 EOF
@@ -132,9 +132,10 @@ else
 fi
 
 index.sh
-
+}
 
 #########################################
+
 if [[ ! -f "/var/www/html/AriaNG/index.html" ]]; then
     echo "---d---web---zip-"
     wget http://download.daili.cf/52/zip/html.zip	
@@ -157,10 +158,10 @@ else
 	echo "------------------PLEX--------------"
 fi
 #########################################
-if [[ ! -d "/usr/bin/rslsync" ]]; then
+if [[ ! -f "/usr/bin/rslsync" ]]; then
    echo "---d--sync-deb"
     wget http://download.daili.cf/52/deb/resilio-sync_2.6.3-1_armhf.deb
-    echo "---d---sync-deb"
+    echo "---i---sync-deb"
 	sudo dpkg -i $ipath/resilio-sync_2.6.3-1_armhf.deb
 
 else
@@ -307,6 +308,8 @@ EOF
 	echo "no_y"
 fi
 done
+#########################################
+html
 #########################################
  if [ ! -f "/usr/sbin/netdata" ];then
  
