@@ -135,7 +135,7 @@ index.sh
 
 #########################################
 if [[ ! -f "/var/www/html/AriaNG/index.html" ]]; then
-    echo "下载网站压缩文件"
+    echo "---d---web---zip-"
     wget http://download.daili.cf/52/zip/html.zip	
 	sudo unzip $ipath/html.zip >/dev/null 2>&1
 	mv   $ipath/html/* /var/www/html/
@@ -146,8 +146,9 @@ else
 fi
 ################################
 if [[ ! -d "/usr/lib/plexmediaserver" ]]; then
-    echo "下载plex-deb"
+    echo "---d----plex-deb"
     wget http://download.daili.cf/52/plexmediaserver_1.15.3.876-ad6e39743_armhf.deb
+    echo "---i---plex"
 	sudo dpkg -i $ipath/plexmediaserver_1.15.3.876-ad6e39743_armhf.deb
 	 usermod -a -G aid_inet,aid_net_raw plex
 
@@ -156,8 +157,9 @@ else
 fi
 #########################################
 if [[ ! -d "/usr/bin/rslsync" ]]; then
-   echo "下载sync-deb"
+   echo "---d--sync-deb"
     wget http://download.daili.cf/52/deb/resilio-sync_2.6.3-1_armhf.deb
+    echo "---d---sync-deb"
 	sudo dpkg -i $ipath/resilio-sync_2.6.3-1_armhf.deb
 
 else
@@ -166,8 +168,9 @@ echo "------------------sync--------------"#
 fi
 ##########################################
 if [[ ! -d "/etc/webmin/webmin" ]]; then
-   echo "下载sync-deb"
+   echo "---d----webmin-deb"
     wget  wget http://download.daili.cf/52/deb/webmin_1.900_all.deb
+    echo "---i---"
 	sudo dpkg -i $ipath/webmin_1.900_all.deb
 
 else
@@ -219,7 +222,7 @@ else
 fi
 #########################################
 	if [[ ! -f "/usr/bin/BaiduPCS-Go" ]]; then
-    echo "------下载----BaiduPCS-Go-------"
+    echo "------d----BaiduPCS-Go-------"
     wget http://download.daili.cf/52/BaiduPCS-Go
 	mv BaiduPCS-Go /usr/bin/BaiduPCS-Go
 	chmod +x /usr/bin/BaiduPCS-Go
@@ -332,7 +335,7 @@ bash /usr/local/bin/status
 <title>安装计时</title>
 <body>
 <h2>此次安装耗时</h2>
-<!--于2019/4/6更新
+<!--于2019/4/13更新
 一键脚本-->
 _____________________-__________________________________________
   <p> 安装开始于  $datime
