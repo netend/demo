@@ -104,7 +104,7 @@ else
  fi
 sudo apt-get update
 sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  \
-deluged deluge-web  aria2 samba -y#resilio-sync  webmin  -y #
+deluged deluge-web  aria2 samba -y #resilio-sync  webmin  -y #
 ################################################
 
 	for stat in {1..3}
