@@ -10,11 +10,41 @@ else
 	exit 0;
 	}
 fi
+############################################
+if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
+grep "http://ftp2.cn.debian.org/debian/" /etc/apt/sources.list >/dev/null
+if [ $? -eq 0 ]; then
+   echo "-----deb------yes-----"
+else
+	     sudo sed -i 's/^/#&/g' /etc/apt/sources.list
+		echo "deb http://ftp2.cn.debian.org/debian/  jessie main contrib non-free" | sudo tee /etc/apt/sources.list
+        echo "deb http://ftp.cn.debian.org/debian/  jessie main contrib non-free" | sudo tee /etc/apt/sources.list	
+        sudo apt-get update
+fi
+ echo "-------Debian GNU/Linux 8----deb----"
+else
 
+ echo "no"
+ fi
 ########################################################
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
 datime=$(date)
 ########################################################
+if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
+grep "http://ftp2.cn.debian.org/debian/" /etc/apt/sources.list >/dev/null
+if [ $? -eq 0 ]; then
+   echo "-----deb------yes-----"
+else
+        > /etc/apt/sources.list
+	echo "deb http://ftp2.cn.debian.org/debian/  jessie main contrib non-free" | sudo tee /etc/apt/sources.list
+        echo "deb http://ftp.cn.debian.org/debian/  jessie main contrib non-free" | sudo tee /etc/apt/sources.list	
+        sudo apt-get update
+fi
+ echo "-------Debian GNU/Linux 8----deb----"
+else
+
+ echo "no"
+ fi
 sudo apt-get update
 sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg nano unzip gnupg lsof
 sudo apt-get install openssl apt-show-versions file \
