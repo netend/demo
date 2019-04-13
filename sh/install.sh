@@ -15,8 +15,9 @@ fi
 starttime=`date +'%Y-%m-%d %H:%M:%S'`
 datime=$(date)
 ########################################################
+sudo apt-get update
 sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg nano unzip gnupg lsof
-apt-get install openssl apt-show-versions file \
+sudo apt-get install openssl apt-show-versions file \
  libapt-pkg-perl libauthen-pam-perl libexpat1 libio-pty-perl \
  libmagic1 libnet-ssleay-perl libpython-stdlib \
  libpython2.7-minimal libpython2.7-stdlib libsqlite3-0 \
@@ -61,7 +62,7 @@ if [[ ! -f "/etc/apt/sources.list.d/php.list" ]]; then
 	sudo echo "deb https://packages.sury.org/php/ jessie main" | tee /etc/apt/sources.list.d/php.list
 	wget -q http://download.daili.cf/52/key/apt.gpg -O- | sudo apt-key add -
 
-	apt-get update
+	sudo apt-get update
 	 echo "done"
 else
 	echo "-----------php--------"
