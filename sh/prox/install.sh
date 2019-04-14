@@ -10,6 +10,32 @@ else
 	exit 0;
 	}
 fi
+reap() {
+apache=`dpkg -s apache2`
+if [[ $apache =~ 'install ok installed' ]]
+then
+
+echo ok
+
+else
+	sudo apt-get update
+    sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba  shellinabox -y 
+#  webmin  resilio-sync
+
+echo "----re-install----"
+fi
+}
+inetdata() {
+ if [ ! -f "/usr/sbin/netdata" ];then
+ 
+echo "开始安装性能监测"
+
+bash <(curl -Ss https://my-netdata.io/kickstart.sh) all --non-interactive
+else
+	echo "Netdata已安装。"
+fi
+#echo "startall"
+}
 ############################################
 if grep -Eqii "Debian GNU/Linux 8"  /etc/issue;then
 grep "linux.daili.cf/debian/" /etc/apt/sources.list >/dev/null
@@ -41,9 +67,11 @@ datime=$(date)
 sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-tools  dpkg nano unzip gnupg lsof
 
 rc_local=$(wget https://github.com/netend/demo/raw/master/sh/conf/rc.local   -q -O-)
-start=$(wget https://github.com/netend/demo/raw/master/sh/conf/stard.sh -q -O-)
+#start=$(wget https://github.com/netend/demo/raw/master/sh/conf/stard.sh -q -O-)
+start=$(wget https://github.com/netend/demo/raw/master/sh/prox/startall -q -O-)
 smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/conf/smb.conf   -q -O-)
-status=$(wget https://github.com/netend/demo/raw/master/sh/conf/statusall -q -O-)
+#status=$(wget https://github.com/netend/demo/raw/master/sh/conf/statusall -q -O-)
+status=$(wget https://github.com/netend/demo/raw/master/sh/prox/statusall -q -O-)
 index=$(wget https://github.com/netend/demo/raw/master/sh/conf/index.sh -q -O-)
 plex=$(wget https://github.com/netend/demo/raw/master/sh/conf/init.d/plexmediaserver -q -O-)
 duo=$(wget https://github.com/netend/demo/raw/master/sh/conf/init.d/duo -q -O-)
@@ -88,14 +116,15 @@ else
  echo "no"
  fi
 
-sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba   webmin  -y #resilio-sync
+sudo apt-get install   apache2  php   php-gd php-mbstring  php-curl  deluged deluge-web aria2 samba  shellinabox  -y #resilio-sync webmin
+reap
 ################################################
 
 	for stat in {1..3}
 
 do
 
-grep "plexmediaserver" /usr/local/bin/start.sh >/dev/null
+grep "plexmediaserver" /usr/local/bin/startall >/dev/null
 
 if [ $? -eq 0 ]; then
 
@@ -308,18 +337,11 @@ EOF
 fi
 done
 #########################################
- if [ ! -f "/usr/sbin/netdata" ];then
- 
-echo "开始安装性能监测"
-
-bash <(curl -Ss https://my-netdata.io/kickstart.sh) all --non-interactive
-else
-	echo "Netdata已安装。"
-fi
-echo "启动软件"
+inetdata
+inetdata
 #########################################
 
- su root -c "exec /usr/local/bin/start.sh"
+ su root -c "exec /usr/local/bin/startall"
 tetime=$(date)
 
 bash /usr/local/bin/status
