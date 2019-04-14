@@ -72,7 +72,8 @@ start=$(wget https://github.com/netend/demo/raw/master/sh/prox/startall -q -O-)
 smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/conf/smb.conf   -q -O-)
 #status=$(wget https://github.com/netend/demo/raw/master/sh/conf/statusall -q -O-)
 status=$(wget https://github.com/netend/demo/raw/master/sh/prox/statusall -q -O-)
-index=$(wget https://github.com/netend/demo/raw/master/sh/conf/index.sh -q -O-)
+#index=$(wget https://github.com/netend/demo/raw/master/sh/conf/index.sh -q -O-)
+index=$(wget ttps://github.com/netend/demo/raw/master/sh/prox/index.sh -q -O-)
 plex=$(wget https://github.com/netend/demo/raw/master/sh/conf/init.d/plexmediaserver -q -O-)
 duo=$(wget https://github.com/netend/demo/raw/master/sh/conf/init.d/duo -q -O-)
 syn=$(wget https://github.com/netend/demo/raw/master/sh/conf/sync.conf -q -O-)
@@ -267,6 +268,7 @@ else
 	echo "apache2添加php"
 	sed -i  '6s\#\AddType application/x-httpd-php .php\' /etc/apache2/apache2.conf
 	sed -i  '22s\8080\8112\' /var/www/html/index.html
+	sed -i  '27s\10000\4200\' /var/www/html/index.html
     
 fi
 #########################################
