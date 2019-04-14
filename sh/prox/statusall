@@ -1,0 +1,92 @@
+#!/bin/bash
+
+echo  "$de  $netsa $sync  $baidu $sync $apache $smb $webssh $plex"
+de=$(ps -ef |grep deluge-we |grep -v "grep" |wc -l)
+sync=$(ps -ef |grep rslsync |grep -v "grep" |wc -l)
+aria=$(ps -ef |grep aria2c |grep -v "grep" |wc -l)
+baidu=$(ps -ef |grep BaiduPCS-Go |grep -v "grep" |wc -l)
+netsa=$(ps -ef |grep netdata |grep -v "grep" |wc -l)
+apache=$(ps -ef |grep apache2 |grep -v "grep" |wc -l)
+smb=$(ps -ef |grep  smbd |grep -v "grep" |wc -l)
+#webssh=$(ps -ef |grep perl |grep -v "grep" |wc -l)
+shell=$(ps -ef |grep shellinabox |grep -v "grep" |wc -l)
+plex=$(ps -ef |grep Plex |grep -v "grep" |wc -l)
+
+
+######################################################
+  if [ $aria -eq 0 ]; then
+
+   echo "aria没有运行"
+
+else
+    echo "aria正在运行"
+fi
+########################################################
+  if [ $de -eq 0 ]; then
+
+   echo "BT没有运行"
+
+      
+else
+    echo "BT正在运行"
+fi
+
+#########################
+  if [ $netsa -eq 0 ]; then
+
+   echo "资源监视没有运行"
+   
+   
+else
+    echo "资源监视正在运行"
+fi
+#########################
+  if [ $sync -eq 0 ]; then
+
+   echo "文件同步没有运行"
+   
+else
+    echo "文件同步正在运行"
+fi
+#########################
+  if [ $baidu -eq 0 ]; then
+
+   echo "BaiduPCS-Go没有运行"
+   
+else
+    echo "BaiduPCS-Go正在运行"
+fi
+#########################
+  if [ $apache -eq 0 ]; then
+
+   echo "apache没有运行"
+   
+else
+    echo "阿帕奇正在运行"
+fi
+#########################
+  if [ $smb -eq 0 ]; then
+
+   echo "局域网文件共享没有运行"
+   
+else
+    echo "局域网共享正在运行"
+fi  
+######################
+  if [ $shell -eq 0 ]; then
+
+   echo "ShellWeb终端没有运行"
+   
+else
+    echo "ShellWeb正在运行"
+fi 
+#######################
+  if [ $plex -eq 0 ]; then
+
+   echo "PLEX没有运行"
+   
+else
+    echo "PLEX正在运行"
+fi 
+echo "如果没有完全启动 可以运行 start.sh"
+exit 0
