@@ -124,7 +124,7 @@ reap
 
 do
 
-grep "plexmediaserver" /usr/local/bin/startall >/dev/null
+grep "plexmediaserver" /usr/local/bin/start.sh >/dev/null
 
 if [ $? -eq 0 ]; then
 
@@ -179,7 +179,7 @@ index.sh
 
 #########################################
 if [[ ! -f "/var/www/html/AriaNG/index.html" ]]; then
-    echo "下载网站压缩文件"
+    echo "---d---web---zip--"
     wget http://download.daili.cf/52/zip/html.zip	
 	sudo unzip $ipath/html.zip >/dev/null 2>&1
 	mv   $ipath/html/* /var/www/html/
@@ -341,7 +341,7 @@ inetdata
 inetdata
 #########################################
 
- su root -c "exec /usr/local/bin/startall"
+ su root -c "exec /usr/local/bin/start.sh"
 tetime=$(date)
 
 bash /usr/local/bin/status
