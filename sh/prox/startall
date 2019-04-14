@@ -39,7 +39,7 @@ fi
 #########################################
 
   if [ $shell -eq 0 ]; then
-      shellinaboxd -t >/dev/null 2>&1
+     sudo nohup  shellinaboxd -t >/dev/null&
      echo "正在启动ShellWeb"
 else
     echo "ShellWeb正在运行"
