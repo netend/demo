@@ -342,7 +342,20 @@ done
 inetdata
 inetdata
 #########################################
+if [ ! -f "/usr/local/bin/install-screen.sh" ];then
 
+echo " "
+else
+
+update-rc.d -f install-screen remove
+sudo rm -rf /etc/init.d/install-screen
+sudo rm /usr/local/bin/install-screen.sh
+sed -i  's\sudo bash  /usr/local/bin/install-screen.sh\#\'  /etc/rc.local
+
+
+    
+fi
+#################################################
  su root -c "exec /usr/local/bin/start.sh"
 tetime=$(date)
 
