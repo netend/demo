@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo rm -rf /tmp/.X1*
+sudo vncserver :1
+sudo nohup novnc --vnc localhost:5901 >/dev/null&
+echo " "
+exit 0
