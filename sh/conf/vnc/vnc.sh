@@ -23,5 +23,5 @@ sudo bash /usr/local/bin/vncpass
 vncserver
 sudo nohup novnc --vnc localhost:5901 >/dev/null&
 
-wcho " "
+echo " "
 exit 0
