@@ -219,7 +219,7 @@ EOF
      chmod 755 /etc/init.d/plexmediaserver
      sudo update-rc.d plexmediaserver defaults 99
 else
-      echo "plex脚本已存在"
+      echo "----plex---yes---"
 fi
 #######################################
   if [ ! -f "/etc/init.d/duo" ];then
@@ -340,7 +340,15 @@ EOF
 fi
 done
 #########################################
-inetdata
+ if [ ! -f "/usr/sbin/netdata" ];then
+wget http://download.daili.cf/52/deb/netdata.tgz
+tar -zxvf netdata.tgz -C /opt/
+chown -R root:root /opt/netdata/
+ln -s /opt/netdata/usr/sbin/netdata /usr/sbin/
+else
+	echo "yes"
+fi
+
 inetdata
 #########################################
 if [ ! -f "/usr/local/bin/install-screen.sh" ];then
