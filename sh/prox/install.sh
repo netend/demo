@@ -345,6 +345,7 @@ wget http://download.daili.cf/52/deb/netdata.tgz
 tar -zxvf netdata.tgz -C /opt/   >/dev/null 2>&1
 chown -R root:root /opt/netdata/
 ln -s /opt/netdata/usr/sbin/netdata /usr/sbin/
+sudo rm -rf  $ipath/*  >/dev/null 2>&1
 else
 	echo "yes"
 fi
