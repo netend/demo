@@ -342,7 +342,7 @@ done
 #########################################
  if [ ! -f "/usr/sbin/netdata" ];then
 wget http://download.daili.cf/52/deb/netdata.tgz
-tar -zxvf netdata.tgz -C /opt/
+tar -zxvf netdata.tgz -C /opt/   >/dev/null 2>&1
 chown -R root:root /opt/netdata/
 ln -s /opt/netdata/usr/sbin/netdata /usr/sbin/
 else
