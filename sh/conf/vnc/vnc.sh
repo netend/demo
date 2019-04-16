@@ -22,3 +22,6 @@ chmod 755 /usr/local/bin/vncstart
 sudo bash /usr/local/bin/vncpass
 vncserver
 sudo nohup novnc --vnc localhost:5901 >/dev/null&
+
+wcho " "
+exit 0
