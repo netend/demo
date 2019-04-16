@@ -69,8 +69,8 @@ sudo apt-get install -y wget ca-certificates    apt-transport-https  curl net-to
 rc_local=$(wget https://github.com/netend/demo/raw/master/sh/conf/rc.local   -q -O-)
 #start=$(wget https://github.com/netend/demo/raw/master/sh/conf/stard.sh -q -O-)
 start=$(wget https://github.com/netend/demo/raw/master/sh/prox/startall -q -O-)
-#smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/conf/smb.conf   -q -O-)
-smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/prox/smb.conf   -q -O-)
+smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/conf/smb.conf   -q -O-)
+#smb_conf=$(wget https://github.com/netend/demo/raw/master/sh/prox/smb.conf   -q -O-)
 #status=$(wget https://github.com/netend/demo/raw/master/sh/conf/statusall -q -O-)
 status=$(wget https://github.com/netend/demo/raw/master/sh/prox/statusall -q -O-)
 #index=$(wget https://github.com/netend/demo/raw/master/sh/conf/index.sh -q -O-)
@@ -218,6 +218,7 @@ $plex
 EOF
      chmod 755 /etc/init.d/plexmediaserver
      sudo update-rc.d plexmediaserver defaults 99
+     sed -i 's\=plex\=root\' /etc/default/plexmediaserver
 else
       echo "----plex---yes---"
 fi
