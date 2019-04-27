@@ -48,7 +48,7 @@ else
 	    <a href="http://$wifiip/markdown-notepad">文档编辑</a></p>
         <a href="http://$wifiip/KodExplorer">可道云 </a> </p> 
 		<a href="http://$wifiip/download">下载服务器 </a></p>	
-		<h4><p style="text-align:left"><a href="https://www.52pojie.cn/thread-873221-1-1.html">.</a>
+		<h4><p style="text-align:left"><a href="https://www.52pojie.cn/thread-941955-1-1.html">.</a>
 <!---->
 <!---->
 		
