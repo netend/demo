@@ -22,6 +22,7 @@ chmod 755 /usr/local/bin/vncstart
 sudo bash /usr/local/bin/vncpass
 vncserver
 sudo nohup novnc --vnc localhost:5901 >/dev/null&
+ sed -i '/exit 0/i\vncstart' /usr/local/bin/start.sh
 
 echo " "
 exit 0
