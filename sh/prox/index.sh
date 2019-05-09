@@ -15,8 +15,8 @@ grep "$wifiip" /var/www/html/ip/index.html >/dev/null
 if [ $? -eq 0 ]; then
 	echo "yes--no"
 else
-    > /var/www/html/ip/index.html
- cat <<EOF >>  /var/www/html/ip/index.html
+    > /var/www/html/index.html
+ cat <<EOF >>  /var/www/html/index.html
        
 	<!DOCTYPE html>
 <html>
