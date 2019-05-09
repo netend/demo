@@ -1,6 +1,7 @@
 #!/bin/bash
 vnc_pass=$(wget https://github.com/netend/demo/raw/master/sh/conf/vnc/vncpasswd.conf -q -O-)
 vnc_start=$(wget https://github.com/netend/demo/raw/master/sh/conf/vnc/vnc-start -q -O-)
+sudo apt update
 apt-get install -y xfce4 xfce4-goodies gnome-icon-theme tightvncserver  iceweasel   websockify novnc  ttf-wqy-zenhei  libreoffice #ttf-arphic-uming
 apt install expect -y
 wget http://download.daili.cf/52/zip/noVNC.zip
