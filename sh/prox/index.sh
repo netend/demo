@@ -10,7 +10,7 @@ fi
 else
 echo ""
 fi
-grep "$wifiip" /var/www/html/ip/index.html >/dev/null
+grep "$wifiip" /var/www/html/index.html >/dev/null
 
 if [ $? -eq 0 ]; then
 	echo "yes--no"
