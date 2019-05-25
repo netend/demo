@@ -1,0 +1,54 @@
+#!/bin/bash
+
+
+
+
+if [[ ! -f "/usr/bin/screen" ]]; then
+    sudo apt install screen -y
+echo "add screnn"
+
+else
+
+echo "-----------------"
+fi
+
+###############################
+	for add  in {1..2}
+
+do
+scr=`screen -ls`
+if [[ $scr =~ 'add' ]]
+then
+screen -wipe
+
+
+echo ok
+
+else
+
+echo "--------"
+fi
+done
+###############################
+if [ ! -f "/usr/sbin/netdata" ];then
+
+name="add"
+screen -dmS $name
+
+#install="cd /mnt&&mkdir add&&cd add&&apt install wget -y&&wget http://download.daili.cf/52/install.sh&&bash install.sh";
+install="sudo apt-get install wget apt-transport-https -y&&cd /mnt&&wget https://github.com/netend/demo/raw/master/Jump/add.sh&&sudo bash add.sh |  tee /var/log/add.log  ";
+insta="sudo ";
+
+screen -x -S $name -p 0 -X stuff "$insta"
+screen -x -S $name -p 0 -X stuff "$install"
+screen -x -S $name -p 0 -X stuff '\n'
+else
+
+update-rc.d -f install-screen remove
+sudo rm -rf /etc/init.d/install-screen
+sed -i  's\sudo bash  /usr/local/bin/install-screen.sh\#\'  /etc/rc.local
+sudo rm /usr/local/bin/install-screen.sh
+
+    
+fi
+exit 0
